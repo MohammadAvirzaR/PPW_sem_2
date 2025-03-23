@@ -126,10 +126,6 @@ section {
   /* transition: ease-in 0.3s; */
   transition: 0.3s ease-in-out;
 }
-.shown {
-  transform: translateY(100%);
-  transition: 0.3s ease-in-out;
-}
 .logo img {
   height: 40px;
 }
