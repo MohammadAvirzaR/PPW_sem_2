@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GameLore - Gaming Secrets and History</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <link rel="icon" type="image/png" href="GameLore.png" />
+  </head>
+  <body>
+    <!-- Header/Navigation -->
+    <header class="header" id="header">
+      <div class="container">
+        <div class="logo">
+          <img src="GameLore.png" alt="GameLore Logo" />
+        </div>
+        <nav class="main-nav">
+          <ul>
+            <li><a href="#features">Start Explore</a></li>
+            <li><a href="#features">News</a></li>
+            <li><a href="#pc">PC</a></li>
+            <li><a href="#android">Android</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <script>
+      let lastScrollY = window.scrollY;
+      const header = document.getElementById("header");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > lastScrollY) {
+          header.classList.add("hidden");
+        } else {
+          header.classList.remove("hidden");
+        }
+        lastScrollY = window.scrollY;
+      });
+    </script>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <h1>WELCOME TO GAMELORE</h1>
+        <p>
+          From classic gaming secrets to the latest easter eggs, find the most
+          unique and surprising trivia here
+        </p>
+        <a href="#features" class="btn btn-primary">Start Explore</a>
+      </div>
+      <div class="rating">
+        <span>4.5</span>
+        <div class="stars">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star half-filled"></span>
+        </div>
+        <span class="review-source">Google Review</span>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+      <div class="container">
+        <div class="about-content">
+          <h2>GAMELORE</h2>
+          <p>
+            We bring you a collection of trivia, easter eggs, and gaming history
+            from various eras.
+          </p>
+        </div>
+        <div class="about-video">
+          <div class="video-container">
+            <video controls poster="video-thumbnail.jpg">
+              <source src="gamelore-intro.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <div class="video-overlay">
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
