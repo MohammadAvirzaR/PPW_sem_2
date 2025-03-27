@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GameLore - Gaming Secrets and History</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <link rel="icon" type="image/png" href="GameLore.png" />
+  </head>
+  <body>
+    <!-- Header/Navigation -->
+    <header class="header" id="header">
+      <div class="container">
+        <div class="logo">
+          <img src="GameLore.png" alt="GameLore Logo" />
+        </div>
+        <nav class="main-nav">
+          <ul>
+            <li><a href="#features">Start Explore</a></li>
+            <li><a href="#features">News</a></li>
+            <li><a href="#pc">PC</a></li>
+            <li><a href="#android">Android</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <script>
+      let lastScrollY = window.scrollY;
+      const header = document.getElementById("header");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > lastScrollY) {
+          header.classList.add("hidden");
+          header.classList.remove("shown")
+        } else {
+          header.classList.remove("hidden");
+          header.classList.add("shown")
+          
+        }
+        lastScrollY = window.scrollY;
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const videoContainer = document.querySelector(".video-container");
+        const video = videoContainer.querySelector("video");
+        const overlay = videoContainer.querySelector(".video-overlay");
+
+        video.autoplay = true;
+        video.muted = true;
+        video.playsinline = true;
+
+        function handleIntersection(entries) {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              video.play().catch((error) => {
+                console.log("Autoplay was prevented:", error);
+              });
+            } else {
+              video.pause();
+            }
+          });
+        }
+
+        const observer = new IntersectionObserver(handleIntersection, {
+        });
+
+        observer.observe(video);
+
+        function togglePlay() {
+          if (video.paused) {
+            video.play();
+            overlay.classList.add("hidden");
+          } else {
+            video.pause();
+            overlay.classList.remove("hidden");
+          }
+        }
+
+        overlay.addEventListener("click", togglePlay);
+      });
+    </script>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <h1>WELCOME TO GAMELORE</h1>
+        <p>
+          From classic gaming secrets to the latest easter eggs, find the most
+          unique and surprising trivia here
+        </p>
+        <a href="#features" class="btn btn-primary">Start Explore</a>
+      </div>
+      <div class="rating">
+        <span>4.5</span>
+        <div class="stars">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star half-filled"></span>
+        </div>
+        <span class="review-source">Google Review</span>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+      <div class="container">
+        <div class="about-content">
+          <h2>GAMELORE</h2>
+          <p>
+            We bring you a collection of trivia, easter eggs, and gaming history
+            from various eras.
+          </p>
+        </div>
+        <div class="about-video">
+          <div class="video-container">
+            <video controls poster="ss111.png" muted playsinline autoplay replay>
+              <source src="ps_clips.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+      <div class="container">
+        <h2>What can you find</h2>
+        <div class="features-grid">
+          <!-- Feature 1 -->
+          <div class="feature-card">
+            <h3><i class="fas fa-star"></i> Exclusive Trivia</h3>
+            <div class="feature-item">
+              <i class="fas fa-check-circle"></i>
+              <p>Unique facts from classic to modern games</p>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-check-circle"></i>
+              <p>Hidden details that players rarely know</p>
+            </div>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="feature-card">
+            <h3><i class="fas fa-book"></i> Gaming History</h3>
+            <div class="feature-item">
+              <i class="fas fa-check-circle"></i>
+              <p>From the 8-bit pixel era to the open-world era</p>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-check-circle"></i>
+              <p>The journey of the gaming industry from Pong to titles</p>
+            </div>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="feature-card">
+            <h3><i class="fas fa-egg"></i> Easter Egg & Secret</h3>
+            <div class="feature-item">
+              <i class="fas fa-check-circle"></i>
+              <p>Discover hidden surprises in your favorite games</p>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-check-circle"></i>
+              <p>Amazing facts behind the scenes of game development</p>
+            </div>
+          </div>
+
+          <!-- Feature 4 -->
+          <div class="feature-card">
+            <h3><i class="fas fa-gamepad"></i> Fun Quiz & Challenge</h3>
+            <div class="feature-item">
+              <i class="fas fa-check-circle"></i>
+              <p>Test your gaming knowledge with trivia challenges</p>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-check-circle"></i>
+              <p>Show who's the real gamer with the highest score</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team" id="team">
+      <div class="container">
+        <h2>Behind us</h2>
+        <div class="team-grid">
+          <!-- Team Member 1 -->
+          <div class="team-member">
+            <div class="member-image">
+              <span
+                ><img
+                  class="member-image"
+                  src="a3fff864-e553-4d2c-9e01-f41e4a2acdca.jpeg"
+                  alt=""
+              /></span>
+            </div>
+            <h3>Alex</h3>
+            <p>Gaming historian, knows the origins of legendary games</p>
+          </div>
+
+          <!-- Team Member 2 -->
+          <div class="team-member">
+            <div class="member-image">
+              <span
+                ><img
+                  class="member-image"
+                  src="a3fff864-e553-4d2c-9e01-f41e4a2acdca.jpeg"
+                  alt=""
+              /></span>
+            </div>
+            <h3>Sam</h3>
+            <p>Easter egg detective, search for hidden surprises</p>
+          </div>
+
+          <!-- Team Member 3 -->
+          <div class="team-member">
+            <div class="member-image">
+              <span
+                ><img
+                  class="member-image"
+                  src="a3fff864-e553-4d2c-9e01-f41e4a2acdca.jpeg"
+                  alt=""
+              /></span>
+            </div>
+            <h3>John</h3>
+            <p>Trivia master, ready to test your knowledge at any time</p>
+          </div>
+
+          <!-- Team Member 4 -->
+          <div class="team-member">
+            <div class="member-image">
+              <span
+                ><img
+                  class="member-image"
+                  src="a3fff864-e553-4d2c-9e01-f41e4a2acdca.jpeg"
+                  alt=""
+              /></span>
+            </div>
+            <h3>Virza</h3>
+            <p>
+              Content creator, bringing gaming trivia to different platforms
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+      <div class="container">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+          <h3>Q: What is GameLore?</h3>
+          <p>
+            A: GameLore is a place where you can find interesting facts, easter
+            eggs, and history of your favorite games!
+          </p>
+        </div>
+        <div class="faq-item">
+          <h3>Q: Can I contribute?</h3>
+          <p>
+            A: Sure! You can submit your favorite trivia through the form on our
+            website.
+          </p>
+        </div>
+        <div class="faq-item">
+          <h3>Q: Are there any quizzes to play?</h3>
+          <p>
+            A: Yes! We have fun quizzes to test your knowledge of the gaming
+            world.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <h2>Send your trivia to us</h2>
+        <p>
+          Help us grow this community by sharing stories about trivia and easter
+          eggs you love!
+        </p>
+        <div class="contact-button">
+          <a href="#" class="btn btn-primary">Send your trivia</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-social">
+          <h3>Follow us on</h3>
+          <div class="social-links">
+            <a href="https://instagram.com/Gamelore" class="social-link">
+              <i class="fab fa-instagram"></i>
+              instagram.com/Gamelore
+            </a>
+            <a href="https://x.com/Gamelore" class="social-link">
+              <i class="fab fa-x-twitter"></i>
+              x.com/Gamelore
+            </a>
+            <a href="https://youtube.com/Gamelore" class="social-link">
+              <i class="fab fa-youtube"></i>
+              youtube.com/Gamelore
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-logo">
+          <div class="logo-box">
+            <span>GAME</span>
+            <span>LORE</span>
+          </div>
+          <p>The Best Place for Entertaining Game Facts</p>
+          <div class="footer-links">
+            <a href="#">Terms of Use</a> | <a href="#">Disclaimer</a> |
+            <a href="#">Privacy Policy</a> |
+            <a href="#">Cookie Policy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
