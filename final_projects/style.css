@@ -29,6 +29,7 @@ body {
   line-height: 1.6;
   color: var(--fontColor);
   background-color: var(--secbg);
+  overflow-x: hidden;
 }
 
 .container {
@@ -55,20 +56,20 @@ h3 {
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
   font-family: "Kanit", sans-serif;
   font-weight: 700;
   font-style: normal;
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
   text-align: center;
   margin-bottom: 40px;
 }
 
 h3 {
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 3vw, 1.2rem);
 }
 
 p {
@@ -92,6 +93,8 @@ section {
   font-weight: 600;
   text-transform: uppercase;
   transition: all 0.3s ease;
+  width: auto;
+  max-width: 300px;
 }
 
 .btn-primary {
@@ -119,11 +122,11 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-direction: row;
 }
 
 .hidden {
   transform: translateY(-100%);
-  /* transition: ease-in 0.3s; */
   transition: 0.3s ease-in-out;
 }
 .shown {
@@ -136,10 +139,14 @@ section {
 
 .main-nav ul {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .main-nav li {
   margin-left: 25px;
+  margin-bottom: 5px;
 }
 
 .main-nav a {
@@ -150,29 +157,40 @@ section {
 .main-nav a:hover {
   color: var(--primary-color);
 }
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--fontColor);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
 /* hero */
 .hero {
   background-image: url("wallpaperflare.com_wallpaper.jpg");
   background-size: cover;
   background-position: center;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   position: relative;
+  padding: 100px 0 50px;
 }
 
 .hero h1 {
-  font-size: 3rem;
   margin-bottom: 20px;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 
 .hero p {
-  font-size: 1.2rem;
+  font-size: clamp(0.8rem, 2vw, 1.2rem);
   max-width: 600px;
   margin: 0 auto 30px;
 }
@@ -208,7 +226,6 @@ section {
 .star.half-filled:before {
   content: "★";
   color: gold;
-  /* position: absolute; */
   clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
 }
 
@@ -226,17 +243,17 @@ section {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-direction: row;
+  gap: 2rem;
 }
 
 .about-content {
   flex: 1;
-  padding-right: 100px;
-  /* padding-left: 1px; */
+  padding-right: 0;
 }
 
 .about-content p {
-  text-align: right;
-  /* width: 70%; */
+  text-align: left;
 }
 
 .about-video {
@@ -267,7 +284,7 @@ section {
 
 /* Features Section */
 .features {
-  background-image: url(System\ Design.png);
+  background-image: url("System\ Design.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -348,14 +365,15 @@ section {
 }
 
 .member-image {
-  /* background-color: #f0f0f0; */
-  /* color: #333; */
-  height: 150px;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
   border-radius: 8px;
+  max-height: 150px;
+  width: 100%;
+  object-fit: cover;
 }
 
 .team-member h3 {
@@ -377,7 +395,7 @@ section {
 }
 
 .faq-item h3 {
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 3vw, 1.2rem);
   margin-bottom: 10px;
   color: var(--primary-color);
 }
@@ -409,6 +427,13 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-social {
+  flex: 1;
+  min-width: 250px;
 }
 
 .footer-social h3 {
@@ -442,6 +467,8 @@ section {
   flex-direction: column;
   align-items: flex-end;
   text-align: right;
+  flex: 1;
+  min-width: 250px;
 }
 
 .logo-box {
@@ -470,266 +497,114 @@ section {
   text-decoration: none;
 }
 
+/* Media Queries */
 @media (max-width: 1024px) {
+  .about .container {
+    padding: 0 20px;
+  }
 }
 
 @media (max-width: 991px) {
-  /* .about .container {
-      flex-direction: column;
-    }
-
-    .about-content {
-      padding-right: 0;
-      margin-bottom: 40px;
-    } */
-
-/*   .features-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  } */
-}
-@media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2.5rem;
+  section {
+    padding: 50px 0;
   }
 
-  .features-grid,
-  .team-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .container {
-    display: flex;
+  .about .container {
     flex-direction: column;
   }
 
-  .main-nav {
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* hero section */
-  .rating {
-    position: absolute;
-    bottom: 30px;
-    backdrop-filter: blur(5px);
-    padding: 5px 5px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-  }
-  .hero {
-    background-image: url("wallpaperflare.com_wallpaper.jpg");
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: relative;
-  }
-
-  .hero h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
-
-  .hero p {
-    font-size: 1rem;
-    max-width: 600px;
-    margin: 0 auto 30px;
-  }
-  .rating span {
-    margin-right: 10px;
-    font-weight: 600;
-  }
-
-  .stars {
-    display: flex;
-  }
-
-  .star:before {
-    content: "★";
-    color: #ccc;
-  }
-
-  .star.filled:before {
-    color: gold;
-  }
-
-  .star.half-filled:before {
-    content: "★";
-    color: gold;
-    /* position: absolute; */
-    clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
-  }
-
-  .review-source {
-    font-size: 0.9em;
-    color: #aaa;
-  }
-
-  .hero .container {
-    align-items: center;
-  }
-
-  .btn {
-    display: inline-block;
-    padding: 12px 30px;
-    border-radius: 30px;
-    font-weight: 600;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    width: 50%;
-  }
-
-  .btn-primary {
-    background-color: var(--primary-color);
-    color: white;
-  }
-
-  .btn-primary:hover {
-    background-color: #3367d6;
-    transform: translateY(-2px);
-  }
-
-  /* About Section */
-  
   .about-content {
-    flex: 1;
-    padding-right: 0px;
-    /* padding-left: 1px; */
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
   }
 
   .about-content p {
     text-align: center;
-    /* width: 70%; */
- 
+  }
+}
 
-@media (max-width: 480px) {
-  h1 {
-    font-size: 2rem;
+@media (max-width: 768px) {
+  /* Mobile menu */
+  .menu-toggle {
+    display: block;
   }
 
-  h2 {
-    font-size: 1.7rem;
+  .main-nav {
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
   }
 
+  .main-nav.active {
+    max-height: 200px;
+  }
+
+  .header .container {
+    flex-wrap: wrap;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    width: 100%;
+    padding-top: 10px;
+  }
+
+  .main-nav li {
+    margin: 0 0 10px 0;
+    text-align: center;
+    width: 100%;
+  }
+
+  .hero .container {
+    padding-top: 70px;
+  }
+
+  .btn {
+    width: auto;
+    min-width: 200px;
+  }
+
+  .hero .rating {
+    position: relative;
+    margin: 20px auto 0;
+    bottom: auto;
+  }
+
+  .footer-container {
+    flex-direction: column;
+  }
+
+  .footer-logo {
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-social {
+    text-align: center;
+  }
+
+  .social-links {
+    align-items: center;
+  }
+}
+
+@media (min-width: 100px) and (max-width: 480px) {
   section {
     padding: 40px 0;
   }
 
-  .hero {
-    height: auto;
-    min-height: 100vh;
-    padding: 100px 0 50px;
+  .container {
+    padding: 0 15px;
   }
 
-  /* hero section */
+  .feature-card {
+    padding: 20px;
+  }
+
   .rating {
-    position: absolute;
-    bottom: 30px;
-    backdrop-filter: blur(5px);
-    padding: 5px 5px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-  }
-  .hero {
-    background-image: url("wallpaperflare.com_wallpaper.jpg");
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: relative;
-  }
-
-  .hero h1 {
-    font-size: 1.4rem;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
-
-  .hero p {
+    padding: 5px 10px;
     font-size: 0.8rem;
-    max-width: 600px;
-    margin: 0 auto 30px;
   }
-  .rating span {
-    margin-right: 10px;
-    font-weight: 600;
-  }
-
-  .stars {
-    display: flex;
-  }
-
-  .star:before {
-    content: "★";
-    color: #ccc;
-  }
-
-  .star.filled:before {
-    color: gold;
-  }
-
-  .star.half-filled:before {
-    content: "★";
-    color: gold;
-    /* position: absolute; */
-    clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
-  }
-
-  .review-source {
-    font-size: 0.9em;
-    color: #aaa;
-  }
-
-  .hero .container {
-    align-items: center;
-  }
-
-  .btn {
-    display: inline-block;
-    padding: 12px 30px;
-    border-radius: 30px;
-    font-weight: 600;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    width: 50%;
-  }
-
-  .btn-primary {
-    background-color: var(--primary-color);
-    color: white;
-  }
-
-  .btn-primary:hover {
-    background-color: #3367d6;
-    transform: translateY(-2px);
-  }
-
-
-
-  .about-content {
-    flex: 1;
-    padding-right: 0px;
-    /* padding-left: 1px; */
-  }
-
-  .about-content p {
-    text-align: center;
-    /* width: 70%; */
-  }
-
- 
 }
