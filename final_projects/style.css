@@ -598,16 +598,7 @@ section {
   }
 
   /* About Section */
-  .about {
-    background-color: var(--darker-bg);
-  }
-
-  .about .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
+  
   .about-content {
     flex: 1;
     padding-right: 0px;
@@ -617,34 +608,7 @@ section {
   .about-content p {
     text-align: center;
     /* width: 70%; */
-  }
-
-  .about-video {
-    flex: 1;
-    text-align: center;
-  }
-
-  .video-container {
-    position: relative;
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  }
-
-  .video-container video {
-    width: 100%;
-    display: block;
-    border-radius: 10px;
-  }
-
-  .hiddens {
-    opacity: 0;
-    pointer-events: none;
-  }
-}
+ 
 
 @media (max-width: 480px) {
   h1 {
