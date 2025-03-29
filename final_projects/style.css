@@ -483,10 +483,10 @@ section {
       margin-bottom: 40px;
     } */
 
-  .features-grid {
+/*   .features-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-  }
+  } */
 }
 @media (max-width: 768px) {
   .hero h1 {
