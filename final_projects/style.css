@@ -488,7 +488,7 @@ section {
     gap: 20px;
   }
 }
-@media (min-width: 480px) and (max-width: 768px) {
+@media (max-width: 768px) {
   .hero h1 {
     font-size: 2.5rem;
   }
@@ -718,16 +718,7 @@ section {
     transform: translateY(-2px);
   }
 
-  /* About Section */
-  .about {
-    background-color: var(--darker-bg);
-  }
 
-  .about .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
 
   .about-content {
     flex: 1;
@@ -740,29 +731,5 @@ section {
     /* width: 70%; */
   }
 
-  .about-video {
-    flex: 1;
-    text-align: center;
-  }
-
-  .video-container {
-    position: relative;
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  }
-
-  .video-container video {
-    width: 100%;
-    display: block;
-    border-radius: 10px;
-  }
-
-  .hiddens {
-    opacity: 0;
-    pointer-events: none;
-  }
+ 
 }
