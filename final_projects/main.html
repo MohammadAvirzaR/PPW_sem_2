@@ -19,7 +19,10 @@
         <div class="logo">
           <img src="GameLore.png" alt="GameLore Logo" />
         </div>
-        <nav class="main-nav">
+        <button class="menu-toggle" id="menuToggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <nav class="main-nav" id="mainNav">
           <ul>
             <li><a href="#features">Start Explore</a></li>
             <li><a href="#features">News</a></li>
@@ -31,58 +34,97 @@
     </header>
 
     <script>
+     
       let lastScrollY = window.scrollY;
       const header = document.getElementById("header");
 
       window.addEventListener("scroll", () => {
         if (window.scrollY > lastScrollY) {
           header.classList.add("hidden");
-          header.classList.remove("shown")
+          header.classList.remove("shown");
         } else {
           header.classList.remove("hidden");
-          header.classList.add("shown")
-          
+          header.classList.add("shown");
         }
         lastScrollY = window.scrollY;
       });
 
+      
       document.addEventListener("DOMContentLoaded", function () {
-        const videoContainer = document.querySelector(".video-container");
-        const video = videoContainer.querySelector("video");
-        const overlay = videoContainer.querySelector(".video-overlay");
+        const menuToggle = document.getElementById("menuToggle");
+        const mainNav = document.getElementById("mainNav");
 
-        video.autoplay = true;
-        video.muted = true;
-        video.playsinline = true;
-
-        function handleIntersection(entries) {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              video.play().catch((error) => {
-                console.log("Autoplay was prevented:", error);
-              });
-            } else {
-              video.pause();
-            }
-          });
-        }
-
-        const observer = new IntersectionObserver(handleIntersection, {
+        menuToggle.addEventListener("click", function () {
+          mainNav.classList.toggle("active");
         });
 
-        observer.observe(video);
+        
+        const navLinks = document.querySelectorAll(".main-nav a");
+        navLinks.forEach((link) => {
+          link.addEventListener("click", function () {
+            mainNav.classList.remove("active");
+          });
+        });
 
-        function togglePlay() {
-          if (video.paused) {
-            video.play();
-            overlay.classList.add("hidden");
-          } else {
-            video.pause();
-            overlay.classList.remove("hidden");
+        
+        const videoContainer = document.querySelector(".video-container");
+        if (videoContainer) {
+          const video = videoContainer.querySelector("video");
+          const overlay = videoContainer.querySelector(".video-overlay");
+
+          if (video) {
+            video.autoplay = true;
+            video.muted = true;
+            video.playsinline = true;
+
+            function handleIntersection(entries) {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  video.play().catch((error) => {
+                    console.log("Autoplay was prevented:", error);
+                  });
+                } else {
+                  video.pause();
+                }
+              });
+            }
+
+            const observer = new IntersectionObserver(handleIntersection, {});
+            observer.observe(video);
+
+            if (overlay) {
+              function togglePlay() {
+                if (video.paused) {
+                  video.play();
+                  overlay.classList.add("hidden");
+                } else {
+                  video.pause();
+                  overlay.classList.remove("hidden");
+                }
+              }
+
+              overlay.addEventListener("click", togglePlay);
+            }
           }
         }
 
-        overlay.addEventListener("click", togglePlay);
+        
+        function adjustRating() {
+          const rating = document.querySelector(".rating");
+          if (rating) {
+            if (window.innerWidth <= 768) {
+              rating.style.position = "relative";
+              rating.style.bottom = "auto";
+            } else {
+              rating.style.position = "absolute";
+              rating.style.bottom = "30px";
+            }
+          }
+        }
+
+        
+        adjustRating();
+        window.addEventListener("resize", adjustRating);
       });
     </script>
 
@@ -121,11 +163,10 @@
         </div>
         <div class="about-video">
           <div class="video-container">
-            <video controls poster="ss111.png" muted playsinline autoplay replay>
+            <video controls poster="ss111.png" muted playsinline autoplay>
               <source src="ps_clips.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
-            </div>
           </div>
         </div>
       </div>
@@ -203,7 +244,7 @@
                 ><img
                   class="member-image"
                   src="a3fff864-e553-4d2c-9e01-f41e4a2acdca.jpeg"
-                  alt=""
+                  alt="Alex"
               /></span>
             </div>
             <h3>Alex</h3>
@@ -217,7 +258,7 @@
                 ><img
                   class="member-image"
                   src="a3fff864-e553-4d2c-9e01-f41e4a2acdca.jpeg"
-                  alt=""
+                  alt="Sam"
               /></span>
             </div>
             <h3>Sam</h3>
@@ -231,7 +272,7 @@
                 ><img
                   class="member-image"
                   src="a3fff864-e553-4d2c-9e01-f41e4a2acdca.jpeg"
-                  alt=""
+                  alt="John"
               /></span>
             </div>
             <h3>John</h3>
@@ -245,7 +286,7 @@
                 ><img
                   class="member-image"
                   src="a3fff864-e553-4d2c-9e01-f41e4a2acdca.jpeg"
-                  alt=""
+                  alt="Virza"
               /></span>
             </div>
             <h3>Virza</h3>
