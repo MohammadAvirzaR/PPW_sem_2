@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>virza js 2</title>
+  </head>
+  <body>
+    <h1>Kalkulator</h1>
+    <button onclick="bilangan1()">bilangan 1</button>
+    <button onclick="bilangan2()">bilangan 2</button>
+    <button onclick="perkalian()">perkalian</button>
+    <button onclick="pembagian()">pembagian</button>
+    <button onclick="penjumlahan()">penjumlahan</button>
+    <button onclick="pengurangan()">pengurangan</button>
+
+    <script>
+      var num1;
+      var num2;
+
+      function perkalian() {
+        var result = num1 * num2;
+        if (num1 == null && num2 == null) {
+          alert("belum mengisi kedua bilangan");
+        } else if (num1 == null) {
+          alert("belum mengisi bilangan 1");
+        } else if (num2 == null) {
+          alert("belum mengisi bilangan 2");
+        } else {
+          alert(result);
+        }
+      }
+      function pembagian() {
+        var result = num1 / num2;
+        if (num1 == null && num2 == null) {
+          alert("belum mengisi kedua bilangan");
+        } else if (num1 == null) {
+          alert("belum mengisi bilangan 1");
+        } else if (num2 == null) {
+          alert("belum mengisi bilangan 2");
+        } else {
+          alert(result);
+        }
+      }
+      function penjumlahan() {
+        num1 = parseInt(num1);
+        num2 = parseInt(num2);
+        var result = num1 + num2;
+        if (num1 == null && num2 == null) {
+          alert("belum mengisi kedua bilangan");
+        } else if (num1 == null) {
+          alert("belum mengisi bilangan 1");
+        } else if (num2 == null) {
+          alert("belum mengisi bilangan 2");
+        } else {
+          alert(result);
+        }
+      }
+      function pengurangan() {
+        var result = num1 - num2;
+        if (num1 == null && num2 == null) {
+          alert("belum mengisi kedua bilangan");
+        } else if (num1 == null) {
+          alert("belum mengisi bilangan 1");
+        } else if (num2 == null) {
+          alert("belum mengisi bilangan 2");
+        } else {
+          alert(result);
+        }
+      }
+
+      function bilangan1() {
+        var number1 = prompt("Masukan bilangan pertama");
+        if (number1 == number1) {
+          num1 = number1;
+        } else alert("belum mengisi bilangan 1");
+      }
+
+      function bilangan2() {
+        var number2 = prompt("Masukan bilangan kedua");
+        if (number2 == number2) {
+          num2 = number2;
+        } else alert("belum mengisi bilangan 2");
+      }
+    </script>
+  </body>
+</html>
